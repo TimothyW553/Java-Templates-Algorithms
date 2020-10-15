@@ -56,6 +56,8 @@ public class DijkstraHeap {
     pq.offer(new Vertex(orig, 0));
     while (!pq.isEmpty()) {
       Vertex curr = pq.poll();
+      if (curr.cost > dist[curr.index])
+        continue;
       for (Edge next : adj.get(curr.index)) {
         if (dist[next.dest] > curr.cost + next.cost) {
           dist[next.dest] = curr.cost + next.cost;
